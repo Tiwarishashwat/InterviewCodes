@@ -11,11 +11,14 @@ class Solution
             {
                 counter=counter+map.get(x);
             }
-            if(map.get(arr[i])==null)
+            if(arr[i]<k)
             {
-                map.put(arr[i],0);
-            }
+                if(map.get(arr[i])==null)
+                {
+                    map.put(arr[i],0);
+                }
             map.put(arr[i],map.get(arr[i])+1);
+            }
         }
         return counter;
     }
