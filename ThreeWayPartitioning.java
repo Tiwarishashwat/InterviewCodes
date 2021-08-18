@@ -1,6 +1,12 @@
 class Solution{
     //Function to partition the array around the range such 
     //that array is divided into three parts.
+     public static void swap(int arr[], int a, int b)
+    {
+        int x=arr[a];
+        arr[a]=arr[b];
+        arr[b]=x;
+    }
     public void threeWayPartition(int array[], int a, int b)
     {
         // code here 
