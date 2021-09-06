@@ -11,7 +11,6 @@ class Solution {
             {
                 max=1;
                 min=1;
-                continue;
             }
             long temp1=arr[i]*max;
             long temp2=arr[i]*min;
