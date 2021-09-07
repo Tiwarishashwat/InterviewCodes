@@ -1,43 +1,64 @@
 class Solution {
     public List<String> fullJustify(String[] words, int maxWidth) {
-        List<String> r = new ArrayList<String>();
-        int i=0;
-        while(i<words.length)
+        List<String> result = new ArrayList<String>();
+        int word=0;
+        while(word<words.length)
         {
-            int j=i-1,characters=0;
-            while(j+1<words.length && words[j+1].length() + characters + j+1-i<=maxWidth)
+            int j=word-1;
+            int characters=0;
+//             Max words that can be adjusted in one line
+            while(j+1<words.length && characters+words[j+1].length() + j+1-word<=maxWidth)
             {
                 j++;
                 characters+=words[j].length();
             }
-            r.add(line(words,i,j,characters,maxWidth));
-            i=j+1;
+            // Adding each line
+            result.add(line(words,word,j,characters,maxWidth));
+            word=j+1;
         }
-        return r;
+        return result;
     }
-    public String line(String words[],int l, int r, int wLen,int max)
+    public String line(String words[],int start,int end, int Linelen,int max)
     {
         StringBuilder a = new StringBuilder();
         int p=1,q=0;
-        if(r!=l)
+        if(end!=start)
         {
-            p=(max-wLen)/(r-l);
-            q=(max-wLen)%(r-l);
+            p=(max-Linelen)/(end-start);
+            q=(max-Linelen)%(end-start);
         }
         
-        for(int i=l;i<=r;i++)
+        for(int i=start;i<=end;i++)
         {
             a.append(words[i]);
-            if(i!=r)
+            if(i!=end)
             {
-                if(r==words.length-1) a.append(" ");
-                else{
-                    for(int k=1;k<=p;k++) a.append(" ");
+                if(end==words.length-1) a.append(" ");
+                else {
+                    for(int j=1;j<=p;j++) a.append(" ");
+                    // extra spaces 
                     if(q-->=1) a.append(" ");
                 }
             }
         }
+        // spaces in the last line
         while(a.length()<max) a.append(" ");
         return a.toString();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
