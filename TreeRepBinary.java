@@ -1,4 +1,4 @@
-public class BinaryTreeRep
+public class TreeRepBinary
 {
 	public static void main(String[] args) {
 	    Node root = new Node(1);
