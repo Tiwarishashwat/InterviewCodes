@@ -6,7 +6,8 @@ class Solution {
         {
             int j=word-1;
             int characters=0;
-//             Max words that can be adjusted in one line
+//             Max words that can be adjusted in one line, that is :
+//             cuurent length (words[j+1].length()) + total characters seen so far for this line (characters) + the spaces between each pair of words (j+1-word)
             while(j+1<words.length && characters+words[j+1].length() + j+1-word<=maxWidth)
             {
                 j++;
