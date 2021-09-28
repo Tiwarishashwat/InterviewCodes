@@ -21,3 +21,27 @@ class Solution {
         return Math.min(flips,S.length()-flips);
     }
 }
+
+
+// C++ Code
+int minFlips (string S)
+{
+    // your code here
+     int flips=0;
+        for(int i=0;i<S.length();i++)
+        {
+            if(i%2==0)
+            {
+                if(S[i]=='0') flips++;
+            }
+            
+            else if(i%2!=0)
+            {
+                if(S[i]=='1') flips++;
+            }
+        }
+        if(flips<S.length()-flips)
+        return flips;
+        else
+        return S.length()-flips;
+}
