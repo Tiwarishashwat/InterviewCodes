@@ -1,21 +1,38 @@
-class Solution {
-    public int majorityElement(int[] nums) {
-        
-        int majority = 0;
-        int candidate = 0;
-        for(int num : nums)
+class Solution
+{
+    static boolean isMajority(int a[], int size, int candidate)
+    {
+        int counter=0;
+        for(int i=0;i<size;i++)
         {
-            if(majority == 0)
+            if(a[i]==candidate)
             {
-                majority = 1;
-                candidate = num;
+                counter++;
+            }
+        }
+        return (counter>size/2);
+    }
+    static int majorityElement(int a[], int size)
+    {
+        // your code here
+        
+        int candidate=-1;
+        int votes=0;
+        for(int i=0;i<size;i++)
+        {
+            if(votes==0)
+            {
+                candidate=a[i];
+                votes=1;
             }
             else
             {
-              if(num == candidate) majority += 1;
-              else majority -= 1;   
-            } 
+                if(a[i]==candidate)
+                    votes++;
+                else
+                    votes--;
+            }
         }
-        return candidate;
+        return (isMajority(a,size,candidate))?candidate:-1;
     }
 }
