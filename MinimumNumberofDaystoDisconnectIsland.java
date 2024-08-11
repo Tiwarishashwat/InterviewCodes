@@ -56,7 +56,7 @@ class Solution {
     }
 
     private void findArticulationPoints(int[][] grid,int row,int col,int[][] discoveryTime,int[][] lowestReachable,int[][] parentCell) {
-        discoveryTime[row][col] = time; //first node discovery is 0, note than time is global
+        discoveryTime[row][col] = time; //first node discovery is 0, note that time is global
         time++; //increment time
         lowestReachable[row][col] = discoveryTime[row][col]; //visited for first time so lowest time and discovery will be same.
         //when a node can be articulation point
