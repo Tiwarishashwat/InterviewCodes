@@ -1,3 +1,8 @@
+
+
+//User function Template for Java
+
+
 class Solution
 {
     //Function to find the shortest distance of all the vertices
@@ -5,29 +10,30 @@ class Solution
     static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
     {
         // Write your code here
-        int dist[] = new int[V];
-        for(int i=0;i<V;i++){
-            dist[i] = Integer.MAX_VALUE;
-        }
-        dist[S] = 0;
+        // [node, dist]
         PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>(){
-            public int compare(int a[], int b[]){
-                return a[1] - b[1];
+            public int compare(int p1[], int p2[]){
+                return p1[1] - p2[1];
             }
         });
-        pq.offer(new int[] {S,0});
-        
+        int dist[] = new int[V];
+        Arrays.fill(dist,Integer.MAX_VALUE);
+        dist[S] = 0;
+        pq.offer(new int[]{S,0});
         while(!pq.isEmpty()){
-            int element[] = pq.poll();
-            int node = element[0];
-            int distance = element[1];
-            for(ArrayList<Integer> neighbour : adj.get(node)){
-                int newDist = distance +  neighbour.get(1);
-                if(newDist<dist[neighbour.get(0)]){
-                    dist[neighbour.get(0)] = newDist;
-                    pq.offer(new int[]{neighbour.get(0),newDist});
+            int pair[] = pq.poll();
+            int u = pair[0];
+            int d = pair[1];
+            if(d > dist[u]) continue;
+            for(ArrayList<Integer> neighbour : adj.get(u)){
+                int v = neighbour.get(0);
+                int w = neighbour.get(1);
+                if(dist[u] + w < dist[v]){
+                    dist[v] = dist[u] + w;
+                    pq.offer(new int[]{v,dist[v]});
                 }
             }
+            
         }
         return dist;
     }
