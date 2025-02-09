@@ -1,5 +1,6 @@
 //explanation
 /*
+Question will be solved using binary search on answer concept.
 If a value mid is achievable, then any value smaller than mid is also achievable.
 If a value mid is not achievable, then any value larger than mid is also not achievable.
 
