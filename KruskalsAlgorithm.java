@@ -2,11 +2,7 @@ class Solution {
     static int spanningTree(int V, int E, List<List<int[]>> adj) {
         // Code Here.
         //(u, v, weight)
-        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<>(){
-            public int compare(int pair1[], int pair2[]){
-                return pair1[2] - pair2[2];
-            }
-        });
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[2] - b[2]);
         // insert edges in pq
         for(int i=0;i<V;i++){
             for(int edges[] : adj.get(i)){
