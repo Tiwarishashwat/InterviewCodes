@@ -6,11 +6,7 @@ class Solution {
     static int spanningTree(int V, int E, List<List<int[]>> adj) {
         // Code Here.
         //(parent, node, weight)
-        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<>(){
-            public int compare(int pair1[], int pair2[]){
-                return pair1[2] - pair2[2];
-            }
-        });
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[2] - b[2]);
         int sum=0;
         ArrayList<int[]> edges = new ArrayList<>(); 
         boolean visited[] = new boolean[V];
